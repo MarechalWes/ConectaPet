@@ -4,172 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pré-Projeto de Extensão I - ConectaPet Corumbá</title>
-  <style>
-    :root {
-      --primary: #1b5e20;
-      --primary-light: #e8f5e9;
-      --secondary: #2e7d32;
-      --accent: #e65100;
-      --text: #263238;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 24px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    header {
-      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-      color: white;
-      padding: 32px 24px;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .badge-inst {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-    }
-    h1 {
-      font-size: 1.85rem;
-      margin-bottom: 8px;
-    }
-    .sub-title {
-      font-size: 1rem;
-      opacity: 0.95;
-    }
-    .metadata-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 24px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .meta-item h4 {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: #64748b;
-      margin-bottom: 4px;
-      letter-spacing: 0.5px;
-    }
-    .meta-item p {
-      font-weight: 600;
-      color: #1e293b;
-    }
-    .section-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--primary-light);
-    }
-    .section-number {
-      background: var(--primary);
-      color: white;
-      font-size: 0.85rem;
-      font-weight: bold;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    h2 {
-      font-size: 1.25rem;
-      color: var(--primary);
-    }
-    h3 {
-      font-size: 1rem;
-      color: #334155;
-      margin: 16px 0 8px 0;
-    }
-    p, li {
-      font-size: 0.95rem;
-      color: #475569;
-      margin-bottom: 10px;
-    }
-    ul, ol {
-      padding-left: 20px;
-      margin-bottom: 12px;
-    }
-    .highlight-box {
-      background: #fffbeb;
-      border-left: 4px solid var(--accent);
-      padding: 12px 16px;
-      border-radius: 4px;
-      margin: 14px 0;
-      font-size: 0.92rem;
-      color: #92400e;
-    }
-    .table-container {
-      overflow-x: auto;
-      margin: 14px 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    th, td {
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      text-align: left;
-    }
-    th {
-      background-color: var(--primary-light);
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .tag {
-      display: inline-block;
-      background: #f1f5f9;
-      color: #334155;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-right: 6px;
-    }
-    footer {
-      text-align: center;
-      margin-top: 32px;
-      color: #94a3b8;
-      font-size: 0.85rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -206,7 +41,7 @@
       </div>
       <p><strong>Título Provisório da Ação:</strong> ConectaPet Corumbá: Diagnóstico participativo e estruturação comunitária para acolhimento e adoção animal responsável.</p>
       <p><strong>Comunidade e Parceiros Envolvidos:</strong> Protetores independentes de animais, lares temporários voluntários e grupos comunitários de proteção animal nos bairros de Corumbá e Ladário/MS.</p>
-      <p><strong>Público Beneficiado:</strong> Cidadãos interessados na adoção consciente, lares temporários sobrecarregados, comunidade local e os animais em situação de vulnerabilidade e abandono.</p>
+      <p><strong>Público Beneficiado:</strong> Cidadãos interessados na adoção consciente, lares temporários sobrecarregados, comunidade local e animais em situação de abandono.</p>
     </div>
 
     <!-- Seção 2 -->
@@ -230,7 +65,7 @@
             <tr>
               <td>Publicações fragmentadas em redes sociais (grupos de Facebook e status de WhatsApp).</td>
               <td>Mensagens perdidas, falta de histórico vacinal/castração e desistências recorrentes.</td>
-              <td>Grupos de WhatsApp e anotações informais em cadernos.</td>
+              <td>Grupos de WhatsApp e anotações informais em cadernos particulares.</td>
             </tr>
             <tr>
               <td>Triagem manual e informal dos adotantes por troca de mensagens de texto/áudio.</td>
@@ -252,7 +87,7 @@
         <span class="section-number">3</span>
         <h2>Demandas e Potencialidades</h2>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="two-cols">
         <div>
           <h3>Demandas (Necessidades Reais)</h3>
           <ul>
@@ -281,7 +116,7 @@
         <h2>Problema e Justificativa Social</h2>
       </div>
       <p><strong>Problema Identificado:</strong> Fragmentação, retrabalho e ineficiência na divulgação e triagem de animais resgatados por protetores independentes em Corumbá e Ladário, gerando sobrecarga aos lares temporários e reincidência de abandono.</p>
-      <p><strong>Justificativa Social:</strong> A proteção animal está diretamente vinculada à saúde pública e ao controle de zoonoses. O curso de ADS intervém não para empurrar um sistema genérico, mas para fornecer uma ferramenta comunitária simples e acessível que empodere os protetores e facilite o encontro responsável entre adotantes conscientes e animais acolhidos.</p>
+      <p><strong>Justificativa Social:</strong> A proteção animal está diretamente vinculada à saúde pública e ao controle de zoonoses. O curso de ADS intervém para fornecer uma ferramenta comunitária simples e acessível que empodere os protetores e facilite o encontro responsável entre adotantes conscientes e animais acolhidos.</p>
     </div>
 
     <!-- Seção 5 -->
