@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pré-Projeto de Extensão I - ConectaPet Corumbá</title>
+  <style>
+    :root {
+      --primary: #1b5e20;
+      --primary-light: #e8f5e9;
+      --secondary: #2e7d32;
+      --accent: #e65100;
+      --text: #263238;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+      color: white;
+      padding: 32px 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .badge-inst {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 1.85rem;
+      margin-bottom: 8px;
+    }
+    .sub-title {
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+    .metadata-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .meta-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .meta-item p {
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    .section-number {
+      background: var(--primary);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: bold;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    h3 {
+      font-size: 1rem;
+      color: #334155;
+      margin: 16px 0 8px 0;
+    }
+    p, li {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .highlight-box {
+      background: #fffbeb;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+      color: #92400e;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .tag {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge-inst">IFMS Campus Corumbá &bull; Tecnologia em ADS</span>
+      <h1>Pré-Projeto de Extensão I: ConectaPet Corumbá</h1>
+      <p class="sub-title">Plataforma Comunitária de Apoio ao Mapeamento, Acolhimento e Adoção Responsável de Animais</p>
+    </header>
+
+    <div class="metadata-card">
+      <div class="meta-item">
+        <h4>Disciplina</h4>
+        <p>[89221] Extensão I (2026-2)</p>
+      </div>
+      <div class="meta-item">
+        <h4>Docente</h4>
+        <p>Prof. Paulo Cesar do Carmo Ribeiro</p>
+      </div>
+      <div class="meta-item">
+        <h4>Integrantes da Equipe</h4>
+        <p>Alex, Edson, Sissy e Wesley</p>
+      </div>
+      <div class="meta-item">
+        <h4>Território de Atuação</h4>
+        <p>Corumbá e Ladário &bull; MS</p>
+      </div>
+    </div>
+
+    <!-- Seção 1 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <h2>Identificação e Público-Alvo</h2>
+      </div>
+      <p><strong>Título Provisório da Ação:</strong> ConectaPet Corumbá: Diagnóstico participativo e estruturação comunitária para acolhimento e adoção animal responsável.</p>
+      <p><strong>Comunidade e Parceiros Envolvidos:</strong> Protetores independentes de animais, lares temporários voluntários e grupos comunitários de proteção animal nos bairros de Corumbá e Ladário/MS.</p>
+      <p><strong>Público Beneficiado:</strong> Cidadãos interessados na adoção consciente, lares temporários sobrecarregados, comunidade local e os animais em situação de vulnerabilidade e abandono.</p>
+    </div>
+
+    <!-- Seção 2 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <h2>Diagnóstico da Realidade</h2>
+      </div>
+      <p>O diagnóstico foi estruturado a partir da aplicação de metodologias participativas (entrevistas semiestruturadas e escuta ativa com voluntários locais), mapeando a dinâmica de acolhimento e doação na região pantaneira.</p>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Como Funciona Hoje</th>
+              <th>Principais Dificuldades</th>
+              <th>Tecnologia Atual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Publicações fragmentadas em redes sociais (grupos de Facebook e status de WhatsApp).</td>
+              <td>Mensagens perdidas, falta de histórico vacinal/castração e desistências recorrentes.</td>
+              <td>Grupos de WhatsApp e anotações informais em cadernos.</td>
+            </tr>
+            <tr>
+              <td>Triagem manual e informal dos adotantes por troca de mensagens de texto/áudio.</td>
+              <td>Sobrecarga financeira e emocional dos protetores; superlotação dos lares temporários.</td>
+              <td>Fotos em celular e formulários impressos avulsos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Princípio Extensionista Observado:</strong> O projeto não partiu de uma solução técnica pronta. O diagnóstico diferenciou o <em>fato observado</em> (informações dispersas), o <em>relato</em> (exaustão dos voluntários) e a <em>hipótese</em> (necessidade de centralização e triagem responsável).
+      </div>
+    </div>
+
+    <!-- Seção 3 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <h2>Demandas e Potencialidades</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div>
+          <h3>Demandas (Necessidades Reais)</h3>
+          <ul>
+            <li>Centralização do catálogo de animais disponíveis com status atualizado.</li>
+            <li>Critérios claros de triagem para adoção responsável e redução de devoluções.</li>
+            <li>Controle de histórico sanitário básico (vacinação, vermifugação e castração).</li>
+            <li>Visibilidade unificada para campanhas e feiras de adoção no município.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Potencialidades (Recursos Existentes)</h3>
+          <ul>
+            <li>Rede voluntária de protetores atuante e articulada no território.</li>
+            <li>Amplo acesso a smartphones e conectividade de dados móveis 4G.</li>
+            <li>Comércio local e clínicas veterinárias dispostas a apoiar divulgações.</li>
+            <li>Disposição dos envolvidos em validar e participar de reuniões de cocriação.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção 4 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <h2>Problema e Justificativa Social</h2>
+      </div>
+      <p><strong>Problema Identificado:</strong> Fragmentação, retrabalho e ineficiência na divulgação e triagem de animais resgatados por protetores independentes em Corumbá e Ladário, gerando sobrecarga aos lares temporários e reincidência de abandono.</p>
+      <p><strong>Justificativa Social:</strong> A proteção animal está diretamente vinculada à saúde pública e ao controle de zoonoses. O curso de ADS intervém não para empurrar um sistema genérico, mas para fornecer uma ferramenta comunitária simples e acessível que empodere os protetores e facilite o encontro responsável entre adotantes conscientes e animais acolhidos.</p>
+    </div>
+
+    <!-- Seção 5 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">5</span>
+        <h2>Objetivo Geral e Objetivos Específicos</h2>
+      </div>
+      <p><strong>Objetivo Geral:</strong></p>
+      <p style="padding-left: 12px; font-weight: 600; color: var(--primary);">
+        Estruturar uma proposta conceitual de tecnologia comunitária voltada à centralização de registros, qualificação da triagem e fomento da adoção responsável de animais acolhidos em Corumbá e Ladário.
+      </p>
+      <h3>Objetivos Específicos:</h3>
+      <ol>
+        <li>Mapear os fluxos atuais de resgate, acolhimento e triagem junto aos protetores locais.</li>
+        <li>Identificar os requisitos e critérios fundamentais para a posse responsável de animais na região.</li>
+        <li>Elaborar a modelagem conceitual da plataforma ConectaPet com interface intuitiva e baixo consumo de dados.</li>
+        <li>Realizar a devolutiva dos achados e validar a proposta com a comunidade parceira antes das etapas de implementação.</li>
+      </ol>
+    </div>
+
+    <!-- Seção 6 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">6</span>
+        <h2>Descrição Inicial da Solução (Proposta Conceitual)</h2>
+      </div>
+      <p>A solução projetada para as etapas seguintes da trilha (Extensão II a IV) consiste em uma aplicação web progressiva (PWA) de navegação simplificada:</p>
+      <ul>
+        <li><span class="tag">Catálogo Público</span> Galeria com fotos, porte, idade estimada, temperamento e status sanitário (vacinas, castração).</li>
+        <li><span class="tag">Módulo de Triagem</span> Formulário rápido de interesse contendo orientações sobre posse responsável antes da solicitação.</li>
+        <li><span class="tag">Painel do Protetor</span> Área restrita simplificada para registro de novos resgates e gestão de contatos de candidatos.</li>
+        <li><span class="tag">Feiras de Adoção</span> Calendário comunitário divulgando datas e locais de eventos presenciais no município.</li>
+      </ul>
+      <p><em>*Nota metodológica: Na etapa de Extensão I não há codificação, banco de dados ou design de telas definitivo.</em></p>
+    </div>
+
+    <!-- Seções 7 e 8 -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">7 & 8</span>
+        <h2>Benefícios Esperados e Viabilidade Inicial</h2>
+      </div>
+      <h3>Benefícios Esperados</h3>
+      <ul>
+        <li>Aumento na taxa de sucesso em adoções duradouras e diminuição de devoluções.</li>
+        <li>Redução do tempo gasto pelos protetores no atendimento individual de mensagens repetitivas.</li>
+        <li>Fortalecimento da rede solidária de acolhimento animal em Corumbá e Ladário.</li>
+      </ul>
+
+      <h3>Viabilidade Inicial</h3>
+      <ul>
+        <li><strong>Técnica:</strong> Tecnologias web leves, adequadas ao escopo curricular de Extensão II a IV.</li>
+        <li><strong>Operacional:</strong> Os voluntários possuem smartphones conectados à internet e manifestaram interesse na ferramenta.</li>
+        <li><strong>Formação dos Alunos:</strong> Oportunidade real de exercício de escuta ativa, análise de processos e responsabilidade cidadã.</li>
+      </ul>
+    </div>
+
+    <!-- Anexo -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-number">Anexo</span>
+        <h2>Ficha de Interação e Escuta Comunitária</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <tbody>
+            <tr>
+              <th style="width: 25%;">Data e Canal</th>
+              <td>Novembro/2026 &bull; Roda de conversa e entrevistas via Google Meet / presencial.</td>
+            </tr>
+            <tr>
+              <th>Público Consultado</th>
+              <td>3 protetores independentes e 2 voluntários de lares temporários de Corumbá.</td>
+            </tr>
+            <tr>
+              <th>Questões Discutidas</th>
+              <td>1. Como são divulgados hoje os animais resgatados?<br>
+                  2. Quais são os maiores gargalos e causas de retrabalho na rotina?<br>
+                  3. Por que ocorrem desistências ou devoluções de animais?<br>
+                  4. Quais recursos de uma ferramenta simples seriam mais úteis?</td>
+            </tr>
+            <tr>
+              <th>Síntese da Devolutiva</th>
+              <td>A comunidade confirmou que a principal necessidade é qualificar a triagem dos adotantes e registrar com segurança o histórico de saúde dos animais.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) &bull; Campus Corumbá</p>
+      <p>Tecnologia em Análise e Desenvolvimento de Sistemas &bull; 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
