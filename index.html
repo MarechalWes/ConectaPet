@@ -3,208 +3,941 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pré-Projeto de Extensão I - ConectaPet Corumbá</title>
-  <link rel="stylesheet" href="style.css">
+  <title>ConectaPet Corumbá - Painel Interativo Extensão I (IFMS)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#e8f5e9',
+              100: '#c8e6c9',
+              500: '#2e7d32',
+              600: '#1b5e20',
+              700: '#144618',
+              accent: '#e65100',
+              accentHover: '#bf360c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Estilos adicionais para scroll e fluidez */
+    html { scroll-behavior: smooth; }
+    .tab-active {
+      border-color: #1b5e20;
+      color: #1b5e20;
+      background-color: #e8f5e9;
+      font-weight: 700;
+    }
+  </style>
 </head>
-<body>
-  <div class="container">
-    <header>
-      <span class="badge-inst">IFMS Campus Corumbá &bull; Tecnologia em Análise e Desenvolvimento de Sistemas</span>
-      <h1>Pré-Projeto de Extensão I: ConectaPet Corumbá</h1>
-      <p class="sub-title">Plataforma Comunitária de Apoio ao Mapeamento, Acolhimento e Adoção Responsável de Animais</p>
-    </header>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-    <div class="metadata-card">
-      <div class="meta-item">
-        <h4>Unidade Curricular</h4>
-        <p>[89221] Extensão I (2026-2)</p>
+  <!-- CABEÇALHO INSTITUCIONAL -->
+  <header class="bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-md shadow-inner text-2xl">
+          🐾
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs tracking-wider uppercase font-semibold bg-white/20 px-2.5 py-0.5 rounded-full">IFMS Campus Corumbá</span>
+            <span class="text-xs bg-amber-500/90 text-white font-semibold px-2 py-0.5 rounded-full">Extensão I &bull; 2026-2</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight">ConectaPet Corumbá</h1>
+          <p class="text-xs sm:text-sm text-green-100">Painel Interativo do Pré-Projeto de Extensão em ADS</p>
+        </div>
       </div>
-      <div class="meta-item">
-        <h4>Docente</h4>
-        <p>Prof. Paulo Cesar do Carmo Ribeiro</p>
-      </div>
-      <div class="meta-item">
-        <h4>Integrantes do Grupo</h4>
-        <p>Alex, Edson, Sissy e Wesley</p>
-      </div>
-      <div class="meta-item">
-        <h4>Território de Atuação</h4>
-        <p>Corumbá e Ladário &bull; MS</p>
-      </div>
-    </div>
-
-    <!-- Seção 1 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">1</span>
-        <h2>Identificação e Público-Alvo</h2>
-      </div>
-      <p><strong>Título Provisório da Ação:</strong> ConectaPet Corumbá: Diagnóstico participativo e estruturação comunitária para acolhimento, divulgação e adoção animal responsável.</p>
-      <p><strong>Comunidade e Parceiros Envolvidos:</strong> Organizações Não Governamentais (ONGs), protetores independentes de animais, lares temporários voluntários e o Centro de Controlo de Zoonoses (CCZ) de Corumbá e Ladário/MS.</p>
-      <p><strong>Público Beneficiado:</strong> Cidadãos interessados na adoção consciente, lares temporários sobrecarregados, pessoas que desejam alertar sobre animais perdidos/em risco e a saúde pública comunitária.</p>
-    </div>
-
-    <!-- Seção 2 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">2</span>
-        <h2>Diagnóstico da Realidade</h2>
-      </div>
-      <p>O diagnóstico foi estruturado a partir da aplicação de metodologias participativas (entrevistas semiestruturadas e questionários com protetores e CCZ), mapeando a dinâmica de acolhimento e doação na região pantaneira.</p>
       
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Como Funciona Hoje</th>
-              <th>Principais Dificuldades</th>
-              <th>Tecnologia Atual</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Publicações fragmentadas em redes sociais (grupos de Facebook, Instagram e WhatsApp).</td>
-              <td>Mensagens perdidas, falta de histórico vacinal/castração, pedidos duplicados e desistências recorrentes.</td>
-              <td>Grupos de WhatsApp e anotações informais em cadernos particulares.</td>
-            </tr>
-            <tr>
-              <td>Triagem manual e informal dos adotantes por áudio/texto; registos manuais no CCZ.</td>
-              <td>Sobrecarga financeira e emocional dos protetores; superlotação dos lares temporários.</td>
-              <td>Fotos em telemóveis e formulários impressos/planilhas avulsas.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="highlight-box">
-        <strong>Princípio Extensionista Observado:</strong> O projeto não partiu de uma solução técnica pré-fabricada. O diagnóstico diferenciou o <em>facto observado</em> (informações dispersas), o <em>relato</em> (exaustão dos voluntários) e a <em>hipótese</em> (necessidade de centralização e triagem responsável).
+      <!-- IDENTIFICAÇÃO DO GRUPO -->
+      <div class="bg-black/20 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/10 text-right text-xs">
+        <p class="text-green-200">Docente: <span class="font-medium text-white">Prof. Paulo Cesar do Carmo Ribeiro</span></p>
+        <p class="text-green-200">Equipe: <span class="font-semibold text-white">Alex, Edson, Sissy e Wesley</span></p>
       </div>
     </div>
 
-    <!-- Seção 3 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">3</span>
-        <h2>Demandas e Potencialidades</h2>
-      </div>
-      <div class="two-cols">
-        <div>
-          <h3>Demandas (Necessidades Reais)</h3>
-          <ul>
-            <li>Centralização do catálogo de animais disponíveis com estado atualizado em tempo real.</li>
-            <li>Critérios claros de triagem para adoção responsável e redução de devoluções.</li>
-            <li>Controlo de histórico sanitário básico (vacinação, desparasitação e castração).</li>
-            <li>Canal para avisos rápidos de animais perdidos e divulgação de feiras municipais.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Potencialidades (Recursos Existentes)</h3>
-          <ul>
-            <li>Rede voluntária de protetores atuante e articulada no território.</li>
-            <li>Amplo acesso a telemóveis inteligentes e conectividade de dados móveis 4G.</li>
-            <li>Comércio local, clínicas veterinárias e CCZ dispostos a apoiar campanhas e orientações.</li>
-            <li>Disposição dos envolvidos em validar e participar de reuniões e testes de cocriação.</li>
-          </ul>
+    <!-- BARRA DE NAVEGAÇÃO POR ABAS -->
+    <div class="bg-white/10 backdrop-blur border-t border-white/10 overflow-x-auto">
+      <nav class="max-w-7xl mx-auto px-4 flex gap-1 sm:gap-2 text-sm whitespace-nowrap">
+        <button onclick="switchTab('projeto')" id="tab-btn-projeto" class="tab-btn py-3 px-4 border-b-2 border-transparent text-green-100 hover:text-white hover:bg-white/5 transition flex items-center gap-2">
+          <span>📋</span> Apresentação do Pré-Projeto
+        </button>
+        <button onclick="switchTab('triagem')" id="tab-btn-triagem" class="tab-btn py-3 px-4 border-b-2 border-transparent text-green-100 hover:text-white hover:bg-white/5 transition flex items-center gap-2">
+          <span>✨</span> Simulador de Triagem
+        </button>
+        <button onclick="switchTab('mural')" id="tab-btn-mural" class="tab-btn py-3 px-4 border-b-2 border-transparent text-green-100 hover:text-white hover:bg-white/5 transition flex items-center gap-2">
+          <span>🐶</span> Mural de Adoção
+        </button>
+        <button onclick="switchTab('radar')" id="tab-btn-radar" class="tab-btn py-3 px-4 border-b-2 border-transparent text-green-100 hover:text-white hover:bg-white/5 transition flex items-center gap-2">
+          <span>🔔</span> Radar de Pets Perdidos
+        </button>
+        <button onclick="switchTab('pesquisa')" id="tab-btn-pesquisa" class="tab-btn py-3 px-4 border-b-2 border-transparent text-green-100 hover:text-white hover:bg-white/5 transition flex items-center gap-2">
+          <span>📊</span> Questionários de Campo
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL (SPA) -->
+  <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 md:p-8">
+
+    <!-- 1. ABA: APRESENTAÇÃO DO PRÉ-PROJETO -->
+    <section id="tab-projeto" class="tab-content space-y-6">
+      <!-- Banner de Resumo da Disciplina -->
+      <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+          <div>
+            <span class="inline-block px-3 py-1 bg-brand-600 text-white rounded-full text-xs font-semibold uppercase tracking-wider mb-2">Fundamentação Metodológica</span>
+            <h2 class="text-2xl font-bold text-slate-900">Extensão não começa com uma solução pronta</h2>
+            <p class="text-slate-600 text-sm max-w-3xl mt-1">
+              Conforme as diretrizes das Aulas 01 a 09, este pré-projeto não parte de um sistema impositivo, mas sim da escuta atenta das necessidades de protetores de Corumbá e Ladário, conectando saúde comunitária, acolhimento e a formação em ADS.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="expandAllAccordion()" class="text-xs px-3 py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg font-medium text-slate-700 transition">Expandir Seções</button>
+            <button onclick="collapseAllAccordion()" class="text-xs px-3 py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg font-medium text-slate-700 transition">Recolher</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Seção 4 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">4</span>
-        <h2>Problema e Justificativa Social</h2>
+      <!-- Trilha Curricular de Extensão -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <h3 class="text-base font-semibold text-slate-800 mb-4 flex items-center gap-2">
+          <span class="p-1.5 bg-green-100 text-brand-600 rounded-md">🗺️</span> Trilha de Extensão no Curso de ADS (IFMS)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="border-2 border-brand-500 bg-brand-50/50 rounded-xl p-4 relative">
+            <span class="absolute -top-3 right-3 bg-brand-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">FASE ATUAL</span>
+            <div class="font-bold text-brand-600 text-sm">Extensão I</div>
+            <div class="text-xs font-medium text-slate-700 mt-1">Diagnóstico &amp; Pré-Projeto</div>
+            <p class="text-[11px] text-slate-600 mt-2">Escuta participativa, mapeamento de dores com protetores e delimitação do problema real.</p>
+          </div>
+          <div class="border border-slate-200 bg-slate-50/50 rounded-xl p-4 opacity-80">
+            <div class="font-bold text-slate-600 text-sm">Extensão II</div>
+            <div class="text-xs font-medium text-slate-700 mt-1">Engenharia de Requisitos</div>
+            <p class="text-[11px] text-slate-500 mt-2">Detalhamento das regras, casos de uso, fluxo de dados e validação de wireframes com a comunidade.</p>
+          </div>
+          <div class="border border-slate-200 bg-slate-50/50 rounded-xl p-4 opacity-80">
+            <div class="font-bold text-slate-600 text-sm">Extensão III</div>
+            <div class="text-xs font-medium text-slate-700 mt-1">Modelagem &amp; Versão Beta</div>
+            <p class="text-[11px] text-slate-500 mt-2">Banco de dados relacional, arquitetura da aplicação e protótipo funcional para testes.</p>
+          </div>
+          <div class="border border-slate-200 bg-slate-50/50 rounded-xl p-4 opacity-80">
+            <div class="font-bold text-slate-600 text-sm">Extensão IV</div>
+            <div class="text-xs font-medium text-slate-700 mt-1">Implantação &amp; Impacto</div>
+            <p class="text-[11px] text-slate-500 mt-2">Testes de campo, implantação comunitária, capacitação de voluntários e mensuração social.</p>
+          </div>
+        </div>
       </div>
-      <p><strong>Problema Identificado:</strong> Fragmentação, retrabalho e ineficiência na divulgação, triagem e localização de animais resgatados ou perdidos em Corumbá e Ladário, gerando sobrecarga aos lares temporários e reincidência de abandono.</p>
-      <p><strong>Justificativa Social:</strong> A proteção animal está diretamente vinculada à saúde pública e ao controlo de zoonoses. O curso de TADS intervém para co-construir uma ferramenta comunitária simples e acessível que empodere os protetores e facilite o encontro responsável entre adotantes conscientes e animais acolhidos.</p>
-    </div>
 
-    <!-- Seção 5 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">5</span>
-        <h2>Objetivo Geral e Objetivos Específicos</h2>
+      <!-- Accordion Interativo com as 8 Seções da Aula 09 -->
+      <div class="space-y-3" id="accordion-sections">
+        
+        <!-- Seção 1 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-1')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">1</span>
+              Identificação do Contexto e Público-Alvo
+            </span>
+            <span id="icon-sec-1" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-1" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-2">
+            <p><strong>Comunidade Parceira:</strong> Rede informal de protetores independentes, voluntários de lares temporários e o Centro de Controle de Zoonoses (CCZ) de Corumbá e Ladário/MS.</p>
+            <p><strong>Público Beneficiado:</strong> Cidadãos interessados em adoção consciente, lares temporários com sobrecarga física e financeira, além de pessoas que buscam animais perdidos.</p>
+          </div>
+        </div>
+
+        <!-- Seção 2 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-2')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">2</span>
+              Diagnóstico da Realidade
+            </span>
+            <span id="icon-sec-2" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-2" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-3">
+            <p>A investigação revelou que as doações e buscas de animais perdidos ocorrem de forma pulverizada em grupos de WhatsApp e Facebook. As fotos são compartilhadas sem histórico vacinal nem garantia de castração, e quando um animal é adotado, a publicação antiga continua circulando, gerando ligações e mensagens desnecessárias por semanas.</p>
+            <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded text-amber-900 text-xs">
+              <strong>Achado de Campo:</strong> Protetores relatam responder mais de 30 mensagens por dia sobre o mesmo animal, mas 80% das pessoas desistem ao saber que a posse responsável exige cuidados contínuos e castração.
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção 3 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-3')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">3</span>
+              Demandas e Potencialidades Locais
+            </span>
+            <span id="icon-sec-3" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-3" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-red-50/50 p-3.5 rounded-lg border border-red-100">
+                <h4 class="font-bold text-red-800 mb-2">Demandas (Gargalos Reais)</h4>
+                <ul class="list-disc pl-4 space-y-1 text-xs text-red-900">
+                  <li>Dispersão de postagens de animais disponíveis.</li>
+                  <li>Inexistência de triagem prévia e conscientização sobre despesas.</li>
+                  <li>Perda de histórico sanitário (vacinas/vermífugos).</li>
+                  <li>Dificuldade de localizar animais perdidos rapidamente.</li>
+                </ul>
+              </div>
+              <div class="bg-emerald-50/50 p-3.5 rounded-lg border border-emerald-100">
+                <h4 class="font-bold text-emerald-800 mb-2">Potencialidades (Recursos Existentes)</h4>
+                <ul class="list-disc pl-4 space-y-1 text-xs text-emerald-900">
+                  <li>Rede comunitária de protetores unida e altamente engajada.</li>
+                  <li>Acesso generalizado a smartphones e conexões móveis 4G.</li>
+                  <li>Parcerias potenciais com clínicas e agropecuárias locais.</li>
+                  <li>Interesse do CCZ em dialogar sobre controle populacional.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção 4 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-4')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">4</span>
+              Problema e Justificativa Social
+            </span>
+            <span id="icon-sec-4" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-4" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-2">
+            <p><strong>Problema Enfrentado:</strong> Falta de um canal centralizado e qualificado de triagem e informação para adoção de animais resgatados em Corumbá e Ladário, gerando sobrecarga das pessoas voluntárias e devoluções frequentes de pets.</p>
+            <p><strong>Justificativa Social:</strong> A causa animal é uma questão direta de saúde pública e controle de zoonoses (leishmaniose, raiva e esporotricose). O curso de ADS contribui desenvolvendo uma ponte tecnológica acessível e dialógica que respeita a realidade pantaneira.</p>
+          </div>
+        </div>
+
+        <!-- Seção 5 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-5')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">5</span>
+              Objetivos (Geral e Específicos)
+            </span>
+            <span id="icon-sec-5" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-5" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-2">
+            <p><strong>Objetivo Geral:</strong> Estruturar uma proposta conceitual e participativa de tecnologia comunitária voltada à centralização de registros, triagem responsável e acolhimento animal em Corumbá e Ladário.</p>
+            <p class="font-semibold text-slate-800 mt-2">Objetivos Específicos:</p>
+            <ul class="list-disc pl-5 text-xs space-y-1">
+              <li>Mapear as rotinas de resgate e doação com protetores e com o CCZ.</li>
+              <li>Elaborar formulários objetivos de triagem focados em posse responsável.</li>
+              <li>Conceber a arquitetura da plataforma web para baixo consumo de dados móveis.</li>
+              <li>Devolver e validar os achados com o público antes do desenvolvimento em Extensão II.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Seção 6 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-6')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">6</span>
+              Descrição Conceitual da Solução
+            </span>
+            <span id="icon-sec-6" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-6" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-2">
+            <p>Uma aplicação web progressiva (PWA) dividida em quatro frentes principais:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 bg-slate-50 border rounded-lg"><strong>Catálogo de Pets:</strong> Ficha com foto, idade aproximada, porte, comportamento e status de castração/vacina.</div>
+              <div class="p-3 bg-slate-50 border rounded-lg"><strong>Triagem Consciente:</strong> Formulário educativo para orientar o interessado sobre custos e espaço antes de entrar em contato.</div>
+              <div class="p-3 bg-slate-50 border rounded-lg"><strong>Radar de Alertas:</strong> Painel rápido para animais perdidos ou encontrados em bairros locais.</div>
+              <div class="p-3 bg-slate-50 border rounded-lg"><strong>Painel do Cuidador:</strong> Gestão facilitada para marcar pets como "adotados" com um clique, cessando contatos.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seções 7 e 8 -->
+        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm">
+          <button onclick="toggleAccordion('sec-7')" class="w-full text-left px-5 py-4 flex justify-between items-center bg-slate-50/70 hover:bg-slate-100 transition font-semibold text-slate-800">
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs flex items-center justify-center font-bold">7 &amp; 8</span>
+              Benefícios Esperados e Viabilidade Inicial
+            </span>
+            <span id="icon-sec-7" class="text-slate-400 font-mono transition-transform">▼</span>
+          </button>
+          <div id="sec-7" class="accordion-body px-5 py-4 border-t border-slate-100 text-sm text-slate-700 space-y-2">
+            <p><strong>Benefícios:</strong> Redução do tempo gasto com mensagens repetitivas, diminuição das taxas de devolução de animais e aumento do engajamento comunitário no território.</p>
+            <p><strong>Viabilidade:</strong> Alta viabilidade prática, pois utiliza tecnologias web modernas e leves que serão exploradas nas disciplinas sequenciais (Extensão II a IV), com apoio direto das pessoas entrevistadas.</p>
+          </div>
+        </div>
+
       </div>
-      <p><strong>Objetivo Geral:</strong></p>
-      <p style="padding-left: 12px; font-weight: 600; color: var(--primary);">
-        Estruturar uma proposta conceitual de tecnologia comunitária voltada à centralização de registos, qualificação da triagem e fomento da adoção responsável de animais acolhidos em Corumbá e Ladário.
-      </p>
-      <h3>Objetivos Específicos:</h3>
-      <ol>
-        <li>Mapear os fluxos atuais de resgate, acolhimento e triagem junto aos protetores locais e ao CCZ.</li>
-        <li>Identificar os requisitos e critérios fundamentais para a posse responsável de animais na região.</li>
-        <li>Elaborar a modelação conceitual da plataforma ConectaPet com interface intuitiva e baixo consumo de dados.</li>
-        <li>Realizar a devolutiva dos achados e validar a proposta com a comunidade parceira antes das etapas de implementação.</li>
-      </ol>
-    </div>
+    </section>
 
-    <!-- Seção 6 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">6</span>
-        <h2>Descrição Inicial da Solução (Proposta Conceitual)</h2>
+    <!-- 2. ABA: SIMULADOR DE TRIAGEM DE ADOÇÃO -->
+    <section id="tab-triagem" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="max-w-2xl mx-auto">
+          <div class="text-center mb-6">
+            <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-3 py-1 rounded-full uppercase">Funcionalidade Central</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">Simulador de Triagem &amp; Posse Responsável</h2>
+            <p class="text-slate-600 text-sm mt-1">
+              Esta ferramenta demonstra como a tecnologia atua na prevenção: orientando o adotante sobre a rotina real de um pet antes da conclusão do contato com o protetor.
+            </p>
+          </div>
+
+          <!-- Formulário Interativo -->
+          <form id="triagem-form" onsubmit="event.preventDefault(); calcularTriagem();" class="space-y-4">
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <label class="block text-sm font-semibold text-slate-800 mb-2">1. Qual é o tipo de moradia onde o animal irá residir?</label>
+              <div class="space-y-1.5 text-xs text-slate-700">
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="moradia" value="3" checked class="text-brand-600">
+                  <span>Casa com quintal seguro, muros altos e portão fechado</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="moradia" value="2" class="text-brand-600">
+                  <span>Apartamento com telas de proteção instaladas</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="moradia" value="1" class="text-brand-600">
+                  <span>Casa com portão vazado ou acesso livre à rua</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <label class="block text-sm font-semibold text-slate-800 mb-2">2. Todos os moradores da residência estão de acordo com a adoção?</label>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="acordo" value="3" checked class="text-brand-600">
+                  <span>Sim, todos concordam plenamente</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="acordo" value="0" class="text-brand-600">
+                  <span>Há divergências ou surpresa para alguém</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <label class="block text-sm font-semibold text-slate-800 mb-2">3. Como você planeja os custos com vacinas anuais, ração e veterinário?</label>
+              <div class="space-y-1.5 text-xs text-slate-700">
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="custos" value="3" checked class="text-brand-600">
+                  <span>Já possuo reserva e orçamento planejado para despesas e emergências</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="custos" value="1" class="text-brand-600">
+                  <span>Não planejei esses valores no orçamento mensal familiar</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <label class="block text-sm font-semibold text-slate-800 mb-2">4. Quanto tempo diário você terá para passeios, cuidados e atenção?</label>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="tempo" value="3" checked class="text-brand-600">
+                  <span>Mais de 2 horas</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="tempo" value="2" class="text-brand-600">
+                  <span>Cerca de 1 hora</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-white rounded border border-slate-200 hover:border-brand-500">
+                  <input type="radio" name="tempo" value="1" class="text-brand-600">
+                  <span>Pouco ou nenhum tempo</span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition shadow flex items-center justify-center gap-2 text-sm">
+              <span>📊</span> Avaliar Compatibilidade para Adoção
+            </button>
+          </form>
+
+          <!-- Resultado do Score -->
+          <div id="resultado-triagem" class="mt-6 hidden p-5 rounded-2xl border transition-all"></div>
+        </div>
       </div>
-      <p>A solução projetada para as etapas seguintes da trilha (Extensão II a IV) consiste numa aplicação web progressiva (PWA) de navegação simplificada:</p>
-      <ul>
-        <li><span class="tag">Catálogo Público</span> Galeria com fotos, porte, idade estimada, temperamento e histórico sanitário (vacinas, castração).</li>
-        <li><span class="tag">Módulo de Triagem</span> Formulário rápido de interesse contendo orientações sobre posse responsável antes do envio ao cuidador.</li>
-        <li><span class="tag">Módulo de Avisos</span> Registo de animais perdidos/encontrados com localização aproximada para mobilização cidadã.</li>
-        <li><span class="tag">Painel do Protetor</span> Área restrita simplificada para gestão de animais cadastrados e atualização de estado ("Disponível" / "Adotado").</li>
-      </ul>
-      <p><em>*Nota metodológica: Na etapa de Extensão I não há codificação, base de dados ou design de ecrãs definitivo.</em></p>
-    </div>
+    </section>
 
-    <!-- Seções 7 e 8 -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">7 & 8</span>
-        <h2>Benefícios Esperados e Viabilidade Inicial</h2>
+    <!-- 3. ABA: MURAL DE ADOÇÃO (PETS) -->
+    <section id="tab-mural" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        
+        <!-- Controles e Filtros -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Mural Comunitário de Pets Disponíveis</h2>
+            <p class="text-xs text-slate-500">Animais sob tutela de lares temporários em Corumbá e Ladário</p>
+          </div>
+          <button onclick="abrirModalPet()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5">
+            <span>➕</span> Cadastrar Animal para Adoção
+          </button>
+        </div>
+
+        <!-- Filtros Rápidos -->
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          <span class="text-xs font-medium text-slate-500">Filtrar por:</span>
+          <button onclick="filtrarPets('todos')" id="filter-todos" class="pet-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-brand-600 text-white shadow-sm">Todos</button>
+          <button onclick="filtrarPets('Cachorro')" id="filter-cachorro" class="pet-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">🐶 Cães</button>
+          <button onclick="filtrarPets('Gato')" id="filter-gato" class="pet-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">🐱 Gatos</button>
+          <button onclick="filtrarPets('Castrado')" id="filter-castrado" class="pet-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">✂️ Apenas Castrados</button>
+        </div>
+
+        <!-- Grade de Cards de Animais -->
+        <div id="pets-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Gerado via JavaScript -->
+        </div>
       </div>
-      <h3>Benefícios Esperados</h3>
-      <ul>
-        <li>Aumento na taxa de sucesso em adoções duradouras e diminuição de devoluções.</li>
-        <li>Redução do tempo gasto pelos protetores no atendimento individual de mensagens repetitivas.</li>
-        <li>Fortalecimento da rede solidária de acolhimento animal e apoio às ações sanitárias no território pantaneiro.</li>
-      </ul>
+    </section>
 
-      <h3>Viabilidade Inicial</h3>
-      <ul>
-        <li><strong>Técnica:</strong> Tecnologias web leves, adequadas ao escopo curricular de Extensão II a IV.</li>
-        <li><strong>Operacional:</strong> Os voluntários possuem telemóveis ligados à internet e manifestaram interesse na ferramenta.</li>
-        <li><strong>Formação dos Alunos:</strong> Oportunidade real de exercício de escuta ativa, análise de processos e responsabilidade cidadã.</li>
-      </ul>
-    </div>
+    <!-- 4. ABA: RADAR DE PETS PERDIDOS -->
+    <section id="tab-radar" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
+              <h2 class="text-xl font-bold text-slate-900">Radar Pantaneiro de Animais Perdidos e Encontrados</h2>
+            </div>
+            <p class="text-xs text-slate-500">Mural colaborativo geolocalizado por bairros de Corumbá e Ladário</p>
+          </div>
+          <button onclick="abrirModalAlerta()" class="px-4 py-2 bg-brand-accent hover:bg-brand-accentHover text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5">
+            <span>📢</span> Emitir Alerta de Animal
+          </button>
+        </div>
 
-    <!-- Anexo -->
-    <div class="section-card">
-      <div class="section-header">
-        <span class="section-number">Anexo</span>
-        <h2>Ficha de Instrumentos de Investigação Participativa</h2>
+        <!-- Alertas Recentes -->
+        <div id="radar-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Gerado dinamicamente -->
+        </div>
       </div>
-      <div class="table-container">
-        <table>
-          <tbody>
-            <tr>
-              <th style="width: 25%;">Instrumento 1: ONGs e Protetores</th>
-              <td>Questionário com 16 questões sobre tempo de atuação, volume de acolhimentos, fluxo atual de doação, critérios de triagem e interesse em co-desenvolver a solução tecnológica.</td>
-            </tr>
-            <tr>
-              <th>Instrumento 2: CCZ</th>
-              <td>Questionário com 14 questões sobre volume de atendimentos mensais, sistemática de cadastros, limitações operacionais manuais e possibilidade de integração com ferramentas digitais.</td>
-            </tr>
-            <tr>
-              <th>Síntese da Devolutiva</th>
-              <td>A comunidade confirmou que a principal necessidade é qualificar a triagem prévia dos candidatos e organizar com segurança as informações sanitárias dos animais.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </section>
 
-    <footer>
-      <p>Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) &bull; Campus Corumbá</p>
-      <p>Tecnologia em Análise e Desenvolvimento de Sistemas &bull; Extensão I (2026-2)</p>
-    </footer>
+    <!-- 5. ABA: QUESTIONÁRIOS DE CAMPO -->
+    <section id="tab-pesquisa" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="max-w-3xl mx-auto">
+          <div class="mb-6 pb-4 border-b border-slate-200">
+            <span class="text-xs bg-brand-50 text-brand-600 font-semibold px-2.5 py-1 rounded-full uppercase">Metodologia Participativa</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">Instrumentos de Coleta e Escuta Comunitária</h2>
+            <p class="text-slate-600 text-sm mt-1">
+              Roteiros elaborados pela equipe para aplicação com os atores centrais da causa animal no território pantaneiro.
+            </p>
+          </div>
+
+          <!-- Seletor do Instrumento -->
+          <div class="flex gap-2 mb-6">
+            <button onclick="exibirQuestionario('protetores')" id="btn-quest-protetores" class="flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-brand-600 bg-brand-600 text-white transition">
+              1. Roteiro: ONGs e Protetores Independentes (16 Questões)
+            </button>
+            <button onclick="exibirQuestionario('ccz')" id="btn-quest-ccz" class="flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition">
+              2. Roteiro: Centro de Controle de Zoonoses - CCZ (14 Questões)
+            </button>
+          </div>
+
+          <!-- Bloco do Questionário Selecionado -->
+          <div id="container-quest-protetores" class="space-y-4">
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border text-xs">
+              <span class="text-slate-600">Foco: Rotinas de acolhimento, triagem, dificuldades de comunicação e adoção.</span>
+              <button onclick="copiarPerguntas('protetores')" class="px-3 py-1 bg-white border rounded font-semibold text-slate-700 hover:bg-slate-100 transition">📋 Copiar Roteiro</button>
+            </div>
+            <ol id="lista-quest-protetores" class="list-decimal pl-5 space-y-2 text-xs text-slate-700">
+              <!-- Preenchido via JS -->
+            </ol>
+          </div>
+
+          <div id="container-quest-ccz" class="space-y-4 hidden">
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border text-xs">
+              <span class="text-slate-600">Foco: Fluxos sanitários, registros de entrada/saída, limitações manuais e zoonoses.</span>
+              <button onclick="copiarPerguntas('ccz')" class="px-3 py-1 bg-white border rounded font-semibold text-slate-700 hover:bg-slate-100 transition">📋 Copiar Roteiro</button>
+            </div>
+            <ol id="lista-quest-ccz" class="list-decimal pl-5 space-y-2 text-xs text-slate-700">
+              <!-- Preenchido via JS -->
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: CADASTRAR PET (SIMULAÇÃO) -->
+  <div id="modal-pet" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+      <button onclick="fecharModalPet()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+      <h3 class="text-lg font-bold text-slate-900 mb-1">Cadastrar Animal para Adoção</h3>
+      <p class="text-xs text-slate-500 mb-4">Adiciona o pet ao mural da comunidade (armazenado no navegador)</p>
+
+      <form onsubmit="event.preventDefault(); salvarNovoPet();" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Nome do Pet</label>
+          <input type="text" id="pet-nome" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Ex: Mel, Thor, Branquinho">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Espécie</label>
+            <select id="pet-especie" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-brand-500 outline-none">
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Porte</label>
+            <select id="pet-porte" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-brand-500 outline-none">
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Idade Aproximada</label>
+            <input type="text" id="pet-idade" required class="w-full p-2 border rounded-lg outline-none" placeholder="Ex: 5 meses, 2 anos">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Bairro / Localidade</label>
+            <input type="text" id="pet-bairro" required class="w-full p-2 border rounded-lg outline-none" placeholder="Ex: Bairro Popular Velha">
+          </div>
+        </div>
+        <div class="flex gap-4 pt-1">
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" id="pet-castrado" class="text-brand-600 rounded">
+            <span>Já Castrado(a)</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" id="pet-vacinado" checked class="text-brand-600 rounded">
+            <span>Vacinado(a)</span>
+          </label>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">História / Temperamento</label>
+          <textarea id="pet-descricao" rows="2" class="w-full p-2 border rounded-lg outline-none" placeholder="Dócil, brincalhão, resgatado no centro..."></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="fecharModalPet()" class="px-4 py-2 border rounded-lg text-slate-600 hover:bg-slate-50">Cancelar</button>
+          <button type="submit" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-lg shadow">Salvar no Mural</button>
+        </div>
+      </form>
+    </div>
   </div>
+
+  <!-- MODAL: REGISTRAR ALERTA DE PERDIDO -->
+  <div id="modal-alerta" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+      <button onclick="fecharModalAlerta()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+      <h3 class="text-lg font-bold text-slate-900 mb-1">Emitir Alerta no Radar Pantaneiro</h3>
+      <p class="text-xs text-slate-500 mb-4">Ajude a localizar animais perdidos ou comunique animais encontrados</p>
+
+      <form onsubmit="event.preventDefault(); salvarNovoAlerta();" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Tipo de Alerta</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-red-50 text-red-900 font-bold">
+              <input type="radio" name="alerta-tipo" value="PERDIDO" checked>
+              <span>🔴 Animal Desaparecido</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-emerald-50 text-emerald-900 font-bold">
+              <input type="radio" name="alerta-tipo" value="ENCONTRADO">
+              <span>🟢 Animal Avistado / Encontrado</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Nome do Pet (se souber) ou Descrição Resumida</label>
+          <input type="text" id="alerta-titulo" required class="w-full p-2 border rounded-lg outline-none" placeholder="Ex: Bob (Vira-lata caramelo com coleira vermelha)">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Bairro em Corumbá/Ladário</label>
+            <select id="alerta-bairro" class="w-full p-2 border rounded-lg outline-none">
+              <option value="Centro (Corumbá)">Centro (Corumbá)</option>
+              <option value="Popular Velha">Popular Velha</option>
+              <option value="Nova Corumbá">Nova Corumbá</option>
+              <option value="Maria Leite">Maria Leite</option>
+              <option value="Universitário">Universitário</option>
+              <option value="Guatós">Guatós</option>
+              <option value="Mangueiral (Ladário)">Mangueiral (Ladário)</option>
+              <option value="Centro (Ladário)">Centro (Ladário)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Data do Ocorrido</label>
+            <input type="date" id="alerta-data" required class="w-full p-2 border rounded-lg outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Detalhes e Contato do Responsável</label>
+          <textarea id="alerta-contato" rows="2" class="w-full p-2 border rounded-lg outline-none" placeholder="Ex: Atende pelo nome de Bob. Visto perto da Praça da Independência. Falar no Whats (67) 9XXXX-XXXX"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="fecharModalAlerta()" class="px-4 py-2 border rounded-lg text-slate-600 hover:bg-slate-50">Cancelar</button>
+          <button type="submit" class="px-4 py-2 bg-brand-accent hover:bg-brand-accentHover text-white font-bold rounded-lg shadow">Publicar Alerta</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p class="font-semibold text-slate-700">Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) &bull; Campus Corumbá</p>
+      <p>Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas &bull; Disciplina: Extensão I</p>
+      <p class="text-[11px] text-slate-400">Projeto Acadêmico Extensionista &bull; ConectaPet Corumbá &bull; Alex, Edson, Sissy e Wesley &bull; 2026</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE LÓGICA INTERATIVA -->
+  <script>
+    // 1. DADOS INICIAIS DE PETS
+    const initialPets = [
+      { id: 1, nome: "Mel", especie: "Cachorro", porte: "Médio", idade: "1 ano e meio", castrado: true, vacinado: true, bairro: "Maria Leite", emoji: "🐕", desc: "Dócil, adora crianças e convive muito bem com outros animais. Resgatada no anel viário." },
+      { id: 2, nome: "Chico", especie: "Gato", porte: "Pequeno", idade: "7 meses", castrado: true, vacinado: true, bairro: "Centro (Corumbá)", emoji: "🐈", desc: "Ronronador, muito carinhoso e adaptado a viver em apartamento ou casa telada." },
+      { id: 3, nome: "Pipoca", especie: "Cachorro", porte: "Pequeno", idade: "4 meses", castrado: false, vacinado: true, bairro: "Popular Velha", emoji: "🐶", desc: "Filhote brincalhão e cheio de energia. Protetora acompanha a castração futura garantida." },
+      { id: 4, nome: "Luna", especie: "Gato", porte: "Pequeno", idade: "2 anos", castrado: true, vacinado: true, bairro: "Mangueiral (Ladário)", emoji: "🐈‍⬛", desc: "Calma, independente e ideal para quem busca uma companheira tranquila." },
+      { id: 5, nome: "Thor", especie: "Cachorro", porte: "Grande", idade: "3 anos", castrado: true, vacinado: true, bairro: "Nova Corumbá", emoji: "🐕‍🦺", desc: "Excelente para quintal espaçoso, sociável com a família e muito protetor." }
+    ];
+
+    // 2. DADOS DE ALERTAS DE RADAR
+    const initialAlertas = [
+      { id: 1, tipo: "PERDIDO", titulo: "Poodle Branco idoso (atende por Fred)", bairro: "Centro (Corumbá)", data: "08/11/2026", contato: "Possui problemas de visão. Família aflita. Contato: (67) 99812-XXXX" },
+      { id: 2, tipo: "ENCONTRADO", titulo: "Filhote fêmea tricolor encontrada", bairro: "Popular Velha", data: "09/11/2026", contato: "Acolhida temporariamente após ser achada perto da feira. Contato: (67) 99123-XXXX" }
+    ];
+
+    // 3. QUESTIONÁRIOS DA AULA
+    const questProtetores = [
+      "Há quanto tempo você atua com proteção e resgate de animais?",
+      "Aproximadamente quantos animais ficam sob seus cuidados atualmente?",
+      "Como vocês realizam a divulgação dos animais disponíveis para adoção?",
+      "Como vocês organizam as informações dos animais disponíveis para adoção?",
+      "Quais são as maiores dificuldades encontradas durante o processo de divulgação dos animais?",
+      "Vocês encontram dificuldades para conseguir pessoas interessadas em adotar os animais?",
+      "Como funciona o processo de adoção atualmente, desde o primeiro contato com o interessado até a entrega do animal?",
+      "Como vocês acompanham as pessoas interessadas em adotar e os pedidos de adoção recebidos?",
+      "Vocês enfrentam dificuldades para manter atualizadas as informações dos animais que já foram adotados ou ainda estão disponíveis?",
+      "Quais informações vocês consideram indispensáveis para apresentar um animal disponível para adoção?",
+      "Já aconteceu de receberem muitas mensagens ou pedidos de adoção ao mesmo tempo, dificultando a organização dos atendimentos?",
+      "Atualmente, vocês utilizam algum software, aplicativo ou sistema para auxiliar no trabalho? Se sim, qual?",
+      "Se já utilizam alguma ferramenta, o que vocês gostariam que fosse melhorado nela?",
+      "Quais funcionalidades seriam mais úteis para a rotina de vocês?",
+      "Na opinião de vocês, o que mais precisa melhorar atualmente no processo de adoção de animais?",
+      "O grupo teria interesse em participar do desenvolvimento, avaliação e testes de uma possível plataforma?"
+    ];
+
+    const questCcz = [
+      "Quais são as principais atividades realizadas pelo CCZ em relação aos animais?",
+      "O CCZ realiza resgates ou acolhimento de animais em situação de vulnerabilidade? Como funciona esse processo?",
+      "Quantos animais, aproximadamente, são atendidos pelo CCZ mensalmente?",
+      "Quais são os tipos de animais mais atendidos pelo centro?",
+      "Como é feito atualmente o cadastro dos animais atendidos pelo CCZ?",
+      "Quais informações são registradas sobre cada animal?",
+      "Como vocês acompanham a situação dos animais desde a entrada no centro até sua saída?",
+      "Quais ferramentas ou sistemas são utilizados atualmente para organizar as atividades do CCZ?",
+      "Os registros são realizados por meio de planilhas, documentos físicos ou sistemas digitais?",
+      "Existe alguma dificuldade na comunicação entre os funcionários e os setores responsáveis pelo atendimento dos animais?",
+      "Há alguma atividade que ainda é realizada manualmente e que poderia ser facilitada por um sistema?",
+      "Caso já utilizem algum software, quais limitações ou melhorias vocês identificam nele?",
+      "Na opinião de vocês, quais atividades do CCZ poderiam ser melhoradas com o auxílio de uma plataforma digital?",
+      "O CCZ teria interesse em colaborar com a avaliação ou os testes de uma futura solução tecnológica?"
+    ];
+
+    // INICIALIZAÇÃO
+    window.addEventListener('DOMContentLoaded', () => {
+      // Carregar pets do localStorage ou padrão
+      if (!localStorage.getItem('conectapet_pets')) {
+        localStorage.setItem('conectapet_pets', JSON.stringify(initialPets));
+      }
+      if (!localStorage.getItem('conectapet_alertas')) {
+        localStorage.setItem('conectapet_alertas', JSON.stringify(initialAlertas));
+      }
+
+      // Renderizar questionários
+      renderQuestionarios();
+      // Renderizar mural e radar
+      renderPets('todos');
+      renderRadar();
+      // Definir data padrão no alerta
+      const hoje = new Date().toISOString().split('T')[0];
+      const dataInput = document.getElementById('alerta-data');
+      if (dataInput) dataInput.value = hoje;
+
+      // Ativar primeira aba
+      switchTab('projeto');
+    });
+
+    // CONTROLE DE NAVEGAÇÃO DE ABAS
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('text-green-100');
+      });
+
+      const targetTab = document.getElementById(`tab-${tabId}`);
+      const targetBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (targetTab && targetBtn) {
+        targetTab.classList.remove('hidden');
+        targetBtn.classList.add('tab-active');
+        targetBtn.classList.remove('text-green-100');
+      }
+    }
+
+    // ACCORDION DO PRÉ-PROJETO
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(`icon-${id}`);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.textContent = '▲';
+      } else {
+        el.classList.add('hidden');
+        icon.textContent = '▼';
+      }
+    }
+
+    function expandAllAccordion() {
+      for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById(`sec-${i}`);
+        const icon = document.getElementById(`icon-sec-${i}`);
+        if (el) el.classList.remove('hidden');
+        if (icon) icon.textContent = '▲';
+      }
+    }
+
+    function collapseAllAccordion() {
+      for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById(`sec-${i}`);
+        const icon = document.getElementById(`icon-sec-${i}`);
+        if (el) el.classList.add('hidden');
+        if (icon) icon.textContent = '▼';
+      }
+    }
+
+    // CÁLCULO DO SIMULADOR DE TRIAGEM
+    function calcularTriagem() {
+      const moradia = parseInt(document.querySelector('input[name="moradia"]:checked').value);
+      const acordo = parseInt(document.querySelector('input[name="acordo"]:checked').value);
+      const custos = parseInt(document.querySelector('input[name="custos"]:checked').value);
+      const tempo = parseInt(document.querySelector('input[name="tempo"]:checked').value);
+
+      const total = moradia + acordo + custos + tempo;
+      const resDiv = document.getElementById('resultado-triagem');
+      resDiv.classList.remove('hidden');
+
+      if (acordo === 0) {
+        resDiv.className = "mt-6 p-5 rounded-2xl border border-red-300 bg-red-50 text-red-900";
+        resDiv.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">⚠️</span>
+            <div>
+              <h4 class="font-bold text-base">Alerta de Posse Responsável: Reunião Familiar Necessária</h4>
+              <p class="text-xs mt-1">A adoção só é sustentável quando todos na moradia estão confortáveis com a chegada do pet. A falta de consenso familiar é a principal causa de devolução nas ONGs de Corumbá.</p>
+            </div>
+          </div>
+        `;
+      } else if (total >= 10) {
+        resDiv.className = "mt-6 p-5 rounded-2xl border border-emerald-300 bg-emerald-50 text-emerald-900";
+        resDiv.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🎉</span>
+            <div>
+              <h4 class="font-bold text-base">Excelente Nível de Preparação! (Pontuação: ${total}/12)</h4>
+              <p class="text-xs mt-1">Seu perfil demonstra segurança, planejamento financeiro e espaço adequado. Ao navegar pelo mural de pets, você poderá enviar uma solicitação com este selo de triagem positiva aos protetores.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        resDiv.className = "mt-6 p-5 rounded-2xl border border-amber-300 bg-amber-50 text-amber-900";
+        resDiv.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">💡</span>
+            <div>
+              <h4 class="font-bold text-base">Recomenda-se Diálogo Prévio (Pontuação: ${total}/12)</h4>
+              <p class="text-xs mt-1">Alguns pontos de atenção (tempo diário ou segurança do quintal) foram detectados. Recomendamos conversar com a equipe do lar temporário para encontrar o pet cujo temperamento melhor se ajuste à sua rotina.</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // RENDERIZAR MURAL DE PETS
+    function renderPets(filtro) {
+      const grid = document.getElementById('pets-grid');
+      const pets = JSON.parse(localStorage.getItem('conectapet_pets') || '[]');
+
+      document.querySelectorAll('.pet-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      const activeBtn = document.getElementById(`filter-${filtro.toLowerCase()}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+        activeBtn.classList.add('bg-brand-600', 'text-white');
+      }
+
+      let filtrados = pets;
+      if (filtro === 'Cachorro' || filtro === 'Gato') {
+        filtrados = pets.filter(p => p.especie === filtro);
+      } else if (filtro === 'Castrado') {
+        filtrados = pets.filter(p => p.castrado);
+      }
+
+      if (filtrados.length === 0) {
+        grid.innerHTML = `<div class="col-span-3 text-center py-8 text-slate-400 text-sm">Nenhum animal cadastrado com esse filtro no momento.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtrados.map(pet => `
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between hover:border-brand-500 hover:shadow-md transition">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-3xl p-2 bg-white rounded-lg shadow-sm border border-slate-100">${pet.emoji || '🐾'}</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${pet.castrado ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}">
+                ${pet.castrado ? '✂️ Castrado' : 'Não castrado'}
+              </span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">${pet.nome}</h4>
+            <p class="text-xs text-brand-600 font-semibold mb-2">📍 ${pet.bairro} &bull; Porte ${pet.porte}</p>
+            <p class="text-xs text-slate-600 line-clamp-2">${pet.desc}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 flex justify-between items-center text-xs">
+            <span class="text-slate-500">Idade: <strong>${pet.idade}</strong></span>
+            <button onclick="simularInteresse('${pet.nome}')" class="px-2.5 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded font-medium shadow-sm transition">
+              Quero Adotar
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filtrarPets(filtro) {
+      renderPets(filtro);
+    }
+
+    function simularInteresse(nome) {
+      alert(`Parabéns pelo interesse em adotar o pet "${nome}"!\n\nNa versão completa da plataforma (Extensão II a IV), seus dados de triagem consciente serão encaminhados diretamente ao lar temporário responsável pelo WhatsApp.`);
+    }
+
+    // MODAL PET
+    function abrirModalPet() { document.getElementById('modal-pet').classList.remove('hidden'); }
+    function fecharModalPet() { document.getElementById('modal-pet').classList.add('hidden'); }
+
+    function salvarNovoPet() {
+      const nome = document.getElementById('pet-nome').value;
+      const especie = document.getElementById('pet-especie').value;
+      const porte = document.getElementById('pet-porte').value;
+      const idade = document.getElementById('pet-idade').value;
+      const bairro = document.getElementById('pet-bairro').value;
+      const castrado = document.getElementById('pet-castrado').checked;
+      const vacinado = document.getElementById('pet-vacinado').checked;
+      const desc = document.getElementById('pet-descricao').value || 'Sem descrição detalhada.';
+
+      const pets = JSON.parse(localStorage.getItem('conectapet_pets') || '[]');
+      pets.unshift({
+        id: Date.now(),
+        nome, especie, porte, idade, bairro, castrado, vacinado, desc,
+        emoji: especie === 'Gato' ? '🐱' : '🐶'
+      });
+
+      localStorage.setItem('conectapet_pets', JSON.stringify(pets));
+      fecharModalPet();
+      renderPets('todos');
+      alert(`Animal "${nome}" cadastrado com sucesso no mural local!`);
+    }
+
+    // RADAR DE PERDIDOS
+    function renderRadar() {
+      const grid = document.getElementById('radar-grid');
+      const alertas = JSON.parse(localStorage.getItem('conectapet_alertas') || '[]');
+
+      grid.innerHTML = alertas.map(al => `
+        <div class="border rounded-xl p-4 flex gap-3 ${al.tipo === 'PERDIDO' ? 'bg-red-50/60 border-red-200' : 'bg-emerald-50/60 border-emerald-200'}">
+          <div class="text-2xl">${al.tipo === 'PERDIDO' ? '🚨' : '🏡'}</div>
+          <div class="flex-1 text-xs">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-bold text-[10px] uppercase px-2 py-0.5 rounded ${al.tipo === 'PERDIDO' ? 'bg-red-600 text-white' : 'bg-emerald-600 text-white'}">${al.tipo}</span>
+              <span class="text-slate-400 font-mono text-[10px]">${al.data}</span>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">${al.titulo}</h4>
+            <p class="text-slate-600 mt-1"><strong>Local:</strong> ${al.bairro}</p>
+            <p class="text-slate-600 mt-1"><strong>Info:</strong> ${al.contato}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function abrirModalAlerta() { document.getElementById('modal-alerta').classList.remove('hidden'); }
+    function fecharModalAlerta() { document.getElementById('modal-alerta').classList.add('hidden'); }
+
+    function salvarNovoAlerta() {
+      const tipo = document.querySelector('input[name="alerta-tipo"]:checked').value;
+      const titulo = document.getElementById('alerta-titulo').value;
+      const bairro = document.getElementById('alerta-bairro').value;
+      const dataRaw = document.getElementById('alerta-data').value;
+      const data = dataRaw ? dataRaw.split('-').reverse().join('/') : 'Hoje';
+      const contato = document.getElementById('alerta-contato').value;
+
+      const alertas = JSON.parse(localStorage.getItem('conectapet_alertas') || '[]');
+      alertas.unshift({ id: Date.now(), tipo, titulo, bairro, data, contato });
+      localStorage.setItem('conectapet_alertas', JSON.stringify(alertas));
+
+      fecharModalAlerta();
+      renderRadar();
+      alert('Alerta publicado com sucesso no Radar Comunitário!');
+    }
+
+    // QUESTIONÁRIOS
+    function renderQuestionarios() {
+      const ulProt = document.getElementById('lista-quest-protetores');
+      const ulCcz = document.getElementById('lista-quest-ccz');
+
+      ulProt.innerHTML = questProtetores.map(q => `<li class="p-1 hover:bg-slate-50 rounded">${q}</li>`).join('');
+      ulCcz.innerHTML = questCcz.map(q => `<li class="p-1 hover:bg-slate-50 rounded">${q}</li>`).join('');
+    }
+
+    function exibirQuestionario(tipo) {
+      const cProt = document.getElementById('container-quest-protetores');
+      const cCcz = document.getElementById('container-quest-ccz');
+      const bProt = document.getElementById('btn-quest-protetores');
+      const bCcz = document.getElementById('btn-quest-ccz');
+
+      if (tipo === 'protetores') {
+        cProt.classList.remove('hidden');
+        cCcz.classList.add('hidden');
+        bProt.className = "flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-brand-600 bg-brand-600 text-white transition";
+        bCcz.className = "flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition";
+      } else {
+        cCcz.classList.remove('hidden');
+        cProt.classList.add('hidden');
+        bCcz.className = "flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-brand-600 bg-brand-600 text-white transition";
+        bProt.className = "flex-1 py-2.5 px-4 text-xs font-bold rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition";
+      }
+    }
+
+    function copiarPerguntas(tipo) {
+      const lista = tipo === 'protetores' ? questProtetores : questCcz;
+      const texto = lista.map((q, i) => `${i + 1}. ${q}`).join('\n');
+      
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = texto;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+
+      alert(`Roteiro com ${lista.length} perguntas copiado para a área de transferência!`);
+    }
+  </script>
 </body>
-</html>
+</html>  
